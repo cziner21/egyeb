@@ -1,0 +1,191 @@
+/*
+
+tablazatok
+
+*/
+
+
+table.siteInformation {
+	border-collapse:collapse;
+	width:100%;
+}
+	table.siteInformation td {
+		vertical-align:top;
+		padding-right:10px;
+		width:99%;
+	}
+	table.siteInformation td.tdLeft {
+		width:1%;
+	}
+
+
+
+
+
+
+table.kalkulacio {
+	border-collapse:collapse;
+	margin:0px 0px;
+	width:100%;
+}
+
+	table.kalkulacio tr.fejlec {
+		border-bottom:2px solid #CCCCCC;
+	}
+
+
+
+	table.kalkulacio tr.adat {
+		border-bottom:1px solid #CCCCCC;;
+	}
+	table.kalkulacio tr.adat:hover {
+		background-color:#E7E7E7;
+	}
+
+	table.kalkulacio td {
+		padding:5px;
+		vertical-align:top;
+	}
+		table.kalkulacio td.termeknev {
+			padding-right:10px;
+		}
+		table.kalkulacio td.termekar {
+			padding-right:0px;
+			text-align:right;
+		}
+
+
+table.adatbekero {
+	border-collapse:collapse;
+	margin:0px 10px;
+}
+	table.adatbekero td {
+		padding:5px;
+		vertical-align:top;
+	}
+		table.adatbekero td.megnevezes {
+			padding-right:10px;
+			font-weight:bold;
+		}
+
+		table.adatbekero td.megnevezes.form {
+			padding-top:8px;
+		}
+
+		table.adatbekero .leiras {
+			font-size:11px;
+			color:#999999;
+			font-weight:normal;
+		}
+
+table.adatbekero a {
+	color:#666666;
+}
+
+
+
+table.other {
+	width:100%;
+	margin-bottom:10px;
+	border-collapse:collapse;
+	font-size:11px;
+	/*border:1px solid #CCCCCC;*/
+}
+
+table.other.shadow {
+	opacity:0.4;
+	filter:alpha(opacity=40);
+}
+
+
+	table.other tr.fejlec {
+		/*border:1px solid #CCCCCC;*/
+		border-bottom:2px solid #CCCCCC;
+	}
+		table.other tr.fejlec td {
+			font-weight:bold;
+			/*padding-right:10px;*/
+		}
+			table.other tr.fejlec td a {
+				display:block;
+				padding:0px;
+				padding:5px 0px;
+				padding-left:12px;
+				color:#666666;
+				background-image:url("images/unsorted.png");
+				background-repeat:no-repeat;
+				background-position:center left;
+				outline:none;
+			}
+				table.other tr.fejlec td a.DESC {
+					background-image:url("images/sort_desc.png");
+				}
+				table.other tr.fejlec td a.ASC {
+					background-image:url("images/sort_asc.png");
+				}
+
+				table.other tr.fejlec.NOSHORT td a {
+					background-image:none;
+					padding-left:0px;
+				}
+
+				table.other tr.fejlec td a.NOSHORT {
+					background-image:none;
+					padding-left:0px;
+				}
+
+			table.other tr.fejlec td a:hover {
+				color:#666666;
+				text-decoration:none;
+			}
+
+
+	table.other tr.adat {
+		border-bottom:1px solid #CCCCCC;
+	}
+		table.other tr.adat:hover {
+			background-color:#E7E7E7;
+			cursor:pointer;
+		}
+		table.other tr.adat.selected {
+			background-color:#DEDEDE;
+		}
+		table.other tr.adat td {
+			padding:3px;
+		}
+
+		table.other tr.adat.sort:hover {
+			cursor:move;
+		}
+
+			table.other tr.adat td a {
+				display:block;
+				padding:3px 0px;
+			}
+			table.other tr.adat td a:hover {
+
+			}
+
+			table.other tr.adat td a.rowEdit {
+				display:block;
+				padding:0px 0px;
+				outline:nonw;
+			}
+
+		table.other tr.adat td.trcheck {
+			padding:0px;
+		}
+
+	/*table.other td {
+		padding:3px;
+	}*/
+		table.other tr.adat td.uid {
+			padding-right:10px;
+		}
+
+
+tr.place td div.place2 {
+	border:1px solid #666666;
+	background-color:#DEDEDE;
+	height:28px;
+}
