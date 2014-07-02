@@ -1,3 +1,4 @@
+<?php $this->benchmark->mark('code_start');?>
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -49,7 +50,7 @@
     
     				<div id="headCuruser" class="bra">
     					<div class="float-right">
-    						<span class="padding-right">Szerver idő: <span id="serverTime"><?php echo date("H:i:s");?>"</span></span> [ <b><?php echo anchor('/auth/logout/','Kilépés');?></b> ]
+    						<span class="padding-right">Szerver idő: <span id="serverTime"><?php echo date("H:i:s");?></span></span> [ <b><?php echo anchor('/auth/logout/','Kilépés');?></b> ]
     					</div>
     					Üdv <b><?php echo $dolgozo_adatai['teljes_nev'];?></b>!
     				</div>
@@ -59,12 +60,12 @@
                 <div id="menuFrame">
     				<div id="menu" class="brt">
     					<ul>
-    						<li class="brt{$active['index']}"><a href="index.php" class="bra">Főoldal</a><!--<span class=\"bra\"></span>--></li>
-                            <li class="brt{$active['vezerlopult']}"><a href="/vezerloPult.php\" class="bra">Vezérlőpult</a></li>
-                            <li class="brt{$active['beszerzes']}"><a href=\"#\" class="bra">Beszerzés</a></li>
-                            <li class="brt{$active['projektek']}"><a href="/projektek.php\" class="bra">Termelés/Gazdálkodás</a></li>
-                            <li class="brt{$active['penzugy']}"><a href="#\" class\"bra\">Pénzügy</a></li>
-                            <li class="brt{$active['munkaido']}"><a href="/nyilvantartasok.php\" class="bra">Nyilvántartások</a></li>
+    						<li class="brt{$active['index']}"><?php echo anchor('kernel/index','Főoldal');?></li>
+                            <li class="brt{$active['vezerlopult']}"><?php echo anchor('vezerloPult/index','Vezérlőpult');?></li>
+                            <li class="brt{$active['beszerzes']}"><a href="#" class="bra">Beszerzés</a></li>
+                            <li class="brt{$active['projektek']}"><a href="/projektek.php" class="bra">Termelés/Gazdálkodás</a></li>
+                            <li class="brt{$active['penzugy']}"><a href="#" class="bra">Pénzügy</a></li>
+                            <li class="brt{$active['munkaido']}"><a href="/nyilvantartasok.php" class="bra">Nyilvántartások</a></li>
                         </ul>
     				</div>
     				<!--<div id=\"bridge\">&nbsp;</div>-->

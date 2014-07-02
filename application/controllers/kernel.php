@@ -6,7 +6,7 @@ class Kernel extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-
+        //$this->output->enable_profiler(TRUE);
 		$this->load->helper('url');
 		$this->load->library('tank_auth');
         $this->load->model('/system/m_header');
@@ -15,7 +15,7 @@ class Kernel extends CI_Controller
 	}
 
 	function index()
-	{  	   
+	{  	
 		if (!$this->tank_auth->is_logged_in()) {
 			redirect('/auth/login/');
 		} else {
