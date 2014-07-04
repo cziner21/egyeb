@@ -24,6 +24,7 @@ class Kernel extends CI_Controller
             $data['dolgozo_adatai'] = $this->m_dolgozok->getDolgozoData($data['user_id']);
             $data['main_title'] = SITETITLE;
             $data['site_title'] = SITETITLE .' :: Főoldal';
+            $data['jogok'] = $this->m_dolgozok->dolgozoInfo($data['user_id']);
             $this->load->view('/system/header/admin/v_admin_header', $data);
 			$this->load->view('/system/body/admin/v_admin_main_body', $data);
             $this->load->view('/system/footer/admin/v_admin_footer');

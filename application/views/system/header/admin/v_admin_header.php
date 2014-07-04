@@ -63,7 +63,7 @@
     						<li class="brt{$active['index']}"><?php echo anchor('kernel/index','Főoldal');?></li>
                             <li class="brt{$active['vezerlopult']}"><?php echo anchor('vezerloPult/index','Vezérlőpult');?></li>
                             <li class="brt{$active['beszerzes']}"><a href="#" class="bra">Beszerzés</a></li>
-                            <li class="brt{$active['projektek']}"><a href="/projektek.php" class="bra">Termelés/Gazdálkodás</a></li>
+                            <li class="brt{$active['projektek']}"><?php echo anchor('Projektek/index','Termelés/Gazdálkodás');?></li>
                             <li class="brt{$active['penzugy']}"><a href="#" class="bra">Pénzügy</a></li>
                             <li class="brt{$active['munkaido']}"><a href="/nyilvantartasok.php" class="bra">Nyilvántartások</a></li>
                         </ul>

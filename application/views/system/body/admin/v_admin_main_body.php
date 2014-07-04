@@ -7,10 +7,23 @@
                 </div>
         </div>
         <div id="contentRight">
-                
+                         <?php
+                                echo $jogok['arajanlatok_megtekintes'];
+                                echo $jogok['muveletek_szerkesztes'];
+                                echo $jogok['futoprojektek_megtekintes'];
+                          ?>
+                         <strong>update 2014.07.03.</strong>
+                         <pre style="margin-left: 3%;">
+                            Átírás folytatása:
+                                vezérlőpult
+                                projectek controller
+                                jogosultságkezelés működővé tétele
+                         </pre>
+                        
                          <strong>update 2014.07.02.</strong>
                          <pre style="margin-left: 3%">
                            Oldal átírás CodeIgniter keretrendszer alá...
+                           Adatbázis műveletek logolása
                          </pre>
                          <strong>update 2014. 03. 07.</strong>
                         <pre style="margin-left: 3%">
@@ -53,12 +66,15 @@
                         
                         <strong>update 2013. 09. 12. - 2013. 09. 15.</strong>
                         <pre style="margin-left: 3%">
-                            Felhasználó becsekkolás - többször be lehet csekkolni egy napon, meg lehet nézni a nekem kiosztott feladatokat
-                            Munkaidő beállítás - projekt, termék, művelet rendelhető az előre meghatározott munkaidőhöz
-                            Munkaidő beállítás - A napi munkaidő beállítható általánosan dátumtól dátumig
-                            Ledolgozott munkaidő - sokkal pontosabban számol
-                            Kijelentkezés után a bejelentkezéshez irányít
-                            Rengeteg hiba javítva a nyáron átvett régi kódban, elavult dolgok javítva, amik PHP 5.3-nál már nem működnek
+                        Felhasználó becsekkolás - többször be lehet csekkolni egy napon, meg lehet nézni
+                        a nekem kiosztott feladatokat.
+                        Munkaidő beállítás - projekt, termék, művelet rendelhető az előre meghatározott
+                        munkaidőhöz.
+                        Munkaidő beállítás - A napi munkaidő beállítható általánosan dátumtól dátumig.
+                        Ledolgozott munkaidő - sokkal pontosabban számol.
+                        Kijelentkezés után a bejelentkezéshez irányít.
+                        Rengeteg hiba javítva a nyáron átvett régi kódban, elavult dolgok javítva, amik
+                        PHP 5.3-nál már nem működnek.
                         </pre>
                         <pre style="margin-left: 3%">
                         update:

@@ -51,7 +51,7 @@
 	
 				    <div class="ajax_loader"></div>
 				    
-				    <form method="post" action="/sap/vezerloPult.php?page=megrendelok" id="customerForm">
+				    <form method="post" action="#" id="customerForm">
 
 				    <table class="other">
     					<tbody>
