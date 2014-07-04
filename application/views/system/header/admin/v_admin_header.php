@@ -13,7 +13,12 @@
     	<link href="<?php echo base_url('themes/default/jquery.contextmenu.css');?>" rel="stylesheet" type="text/css" />
     	<link href="<?php echo base_url('themes/default/fileuploader.css');?>" rel="stylesheet" type="text/css" />
     
-    	
+        <!--jquery ui, tabs, popups, etc...-->
+  	    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+        <!--//jquery ui-->
+        
     	<script type="text/javascript" src="<?php echo base_url('js/jquery-1.6.2.min.js');?>"></script>
     	<script type="text/javascript" src="<?php echo base_url('js/jquery-ui-1.8.16.custom.min.js');?>"></script>
     	<script type="text/javascript" src="<?php echo base_url('js/jquery.ui.datepicker-hu.js');?>"></script>
@@ -32,6 +37,25 @@
     	<script type="text/javascript">
     		var currenttime = ".round((time()*1000))."
     	</script>
+        
+        <script type='text/javascript'>
+           $(document).ready(function(){
+             $( "#dialog" ).dialog({ width: 700 });
+             var width = $( "#dialog" ).dialog( "option", "width" );
+             // setter
+             $( "#dialog" ).dialog( "option", "width", 700 );
+             $( "#dialog" ).dialog({ autoOpen: true });
+             $( "#opener" ).click(function() {
+                
+                $( "#dialog" ).dialog( "open" );
+                
+             });
+              /*tabcontrol*/
+              $(function() {
+                $( "#tabs" ).tabs();
+              });
+           });
+        </script>
         
     </head>
     <body>

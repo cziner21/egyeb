@@ -19,7 +19,8 @@
 
 			        <div class="content cont-close">
                         <?php //ide dinamikusan a gomb ?>
-	                   <button aria-disabled="false" role="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" id="accessNewButton"><span class="ui-button-text">Új hozzáférés</span></button>
+	                   <?php echo anchor('vezerloPult/addDolgozo','<button aria-disabled="false" role="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" id="opener"><span class="ui-button-text">Új hozzáférés</span></button>');?>
+  
                     </div>
                     
                 </div>    
@@ -51,20 +52,22 @@
 					                  </tr>
 		                              <?php
                                             //ide jön a felhasználók listázása
-                                            /*
+                                            $sum = count($dolgozok['id']);
+                                            //var_dump($sum);
                                             
-                                            foreach($dolgozok as $dolgozo){
+                                            for($i = 0; $i < $sum ; $i++){
+                                                
                                                 echo '<tr class="adat">
-                                                        <td class="right uid">'.$dolgozo['id'].'</td>
-    		                                            <td><a href="#" class="userInformation" rel="'.$dolgozo['id'].'"><b>'.$dolgozo['username'].'</b></a></td>
-                                						<td>'.$dolgozo['teljes_nev'].'</td>
-                                						<td>'.$dolgozo['engedelyezve'].'</td>
-                                						<td><b>'.$dolgozo['priv'].'</b></td>
-                                						<td>'.$dolgozo['created'].'</td>
-                                						<td>'.$dolgozo['last_login'].'</td>
+                                                        <td class="right uid">'.$dolgozok['id'][$i].'</td>
+    		                                            <td>'. anchor('vezerloPult/dolgozoAdatlap/'.$dolgozok['id'][$i],$dolgozok['username'][$i]).'</td>
+                                						<td>'.$dolgozok['teljes_nev'][$i].'</td>
+                                						<td>'.$dolgozok['engedelyezve'][$i].'</td>
+                                						<td><b>'.$dolgozok['priv'][$i].'</b></td>
+                                						<td>'.$dolgozok['created'][$i].'</td>
+                                						<td>'.$dolgozok['last_login'][$i].'</td>
                                 						<td class="trcheck"><input class="checkbox" name="" value="" disabled="disabled" type="checkbox"></td>
 			                                          </tr>';
-                                            }*/
+                                            }
                                       ?>
                                       
                                    </tbody>

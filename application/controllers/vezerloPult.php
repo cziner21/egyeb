@@ -26,6 +26,7 @@ class vezerloPult extends CI_Controller
             $this->load->view('/system/body/admin/vezerlopult/v_vezerlopult_menu',$data);
             $data['jogok'] = $this->m_dolgozok->dolgozoInfo($data['user_id']);
             if($data['jogok']['hozzaferesek_megtekintes'] == 1){
+             $data['dolgozok'] = $this->m_dolgozok->listDolgozok();
 			 $this->load->view('/system/body/admin/vezerlopult/v_admin_hozzaferesek', $data);
             }
             else{
@@ -35,6 +36,30 @@ class vezerloPult extends CI_Controller
             }
             $this->load->view('/system/footer/admin/v_admin_footer');
 		}
+    }
+    
+    function addDolgozo(){
+        $data['user_id']	= $this->tank_auth->get_user_id();
+		$data['username']	= $this->tank_auth->get_username();
+        $data['dolgozo_adatai'] = $this->m_dolgozok->getDolgozoData($data['user_id']);
+        $data['main_title'] = SITETITLE;
+        $data['site_title'] = SITETITLE .' :: Vezérlőpult -> Hozzáférések';
+        $this->load->view('/system/header/admin/v_admin_header', $data);
+        $this->load->view('/system/body/admin/vezerlopult/v_vezerlopult_menu',$data);
+        $this->load->view('/system/body/admin/vezerlopult/hozzaferesek/v_admin_addDolgozo');
+        $this->load->view('/system/footer/admin/v_admin_footer');
+    }
+    
+    function dolgozoAdatlap($id){
+        //$data['jogok'] = $this->m_dolgozok->dolgozoInfo($data['user_id']);
+        $data['user_id']	= $this->tank_auth->get_user_id();
+			$data['username']	= $this->tank_auth->get_username();
+            $data['dolgozo_adatai'] = $this->m_dolgozok->getDolgozoData($data['user_id']);
+            $data['main_title'] = SITETITLE;
+            $data['site_title'] = SITETITLE .' :: Vezérlőpult -> Hozzáférések';
+            $this->load->view('/system/header/admin/v_admin_header', $data);
+        $this->load->view('/system/body/admin/vezerlopult/hozzaferesek/v_admin_dolgozoInfo');
+        $this->load->view('/system/footer/admin/v_admin_footer');
     }
     
     function megrendelok(){

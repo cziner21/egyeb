@@ -58,13 +58,43 @@ class m_dolgozok extends CI_Model
             	 $jog['kiszallitva_megtekintes'] = $row->kiszallitva_megtekintes ;
             	 $jog['kiszallitva_szerkesztes'] = $row->kiszallitva_szerkesztes ;
             	 $jog['elutasitva_megtekintes'] = $row->elutasitva_megtekintes ;
-            	$jog['elutasitva_szerkesztes'] = $row-> elutasitva_szerkesztes ;
+            	 $jog['elutasitva_szerkesztes'] = $row-> elutasitva_szerkesztes ;
                 }
             }
             return $jog;
+        }      
+    }
+    
+    function listDolgozok(){
+             //var_dump($links);
+             $list= array();
+             
+             $query = $this->db->get('dolgozok');
+                         
+             if ($query->num_rows() !== 0 ){
+                 foreach($query->result() as $row){
+                     $list['id'][] = $row->id;
+                     $list['username'][] = $row->username;
+                     $list['teljes_nev'][] = $row->teljes_nev;
+                     if($row->banned == 0)
+                        $list['engedelyezve'][] = 'engedélyezve';
+                     else
+                        $list['engedelyezve'][] = 'kitiltva';
+                     $list['priv'][] = $row->priv;
+                     $list['created'][] = $row->created;
+                     $list['last_login'][] = $row->last_login;
+                 }
+                 
+                return $list;
+             }
+             else{
+                var_dump("hiba a lekérdezésben");
+             }
         }
         
-    }
+        
+    
+
 }
 
 ?>
