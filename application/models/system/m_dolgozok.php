@@ -22,13 +22,13 @@ class m_dolgozok extends CI_Model
     }
     
     function dolgozoInfo($p_id){
-        //if($p_id != null){
+        if($p_id != null){
             $jog = array();
-            $id = $p_id;
-            $dolgozoInfo_stored_procedure = "CALL dolgozoInfo(?) ";
-            $result = $this->db->query($dolgozoInfo_stored_procedure,array('id'=>$id));
-            if($result->num_rows() == 1){
-                foreach ($result->result() as $row){
+            //$id = $p_id;
+            //$dolgozoInfo_stored_procedure = "CALL dolgozoInfo(?) ";
+            $query = $this->db->get_where('dolgozok', array('id' => $p_id));
+            if($query->num_rows() == 1){
+                foreach ($query->result() as $row){
                     
                  $jog['vezerlopult_megtekintes'] = $row->vezerlopult_megtekintes;
             	 $jog['hozzaferesek_megtekintes'] = $row->hozzaferesek_megtekintes; 
@@ -62,7 +62,8 @@ class m_dolgozok extends CI_Model
                 }
             }
             return $jog;
-        //}
+        }
+        
     }
 }
 

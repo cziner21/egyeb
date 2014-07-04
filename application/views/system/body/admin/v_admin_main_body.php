@@ -7,11 +7,7 @@
                 </div>
         </div>
         <div id="contentRight">
-                         <?php
-                                echo $jogok['arajanlatok_megtekintes'];
-                                echo $jogok['muveletek_szerkesztes'];
-                                echo $jogok['futoprojektek_megtekintes'];
-                          ?>
+                         
                          <strong>update 2014.07.03.</strong>
                          <pre style="margin-left: 3%;">
                             Átírás folytatása:

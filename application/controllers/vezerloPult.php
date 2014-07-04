@@ -23,7 +23,16 @@ class vezerloPult extends CI_Controller
             $data['main_title'] = SITETITLE;
             $data['site_title'] = SITETITLE .' :: Vezérlőpult -> Hozzáférések';
             $this->load->view('/system/header/admin/v_admin_header', $data);
-			$this->load->view('/system/body/admin/vezerlopult/v_admin_hozzaferesek', $data);
+            $this->load->view('/system/body/admin/vezerlopult/v_vezerlopult_menu',$data);
+            $data['jogok'] = $this->m_dolgozok->dolgozoInfo($data['user_id']);
+            if($data['jogok']['hozzaferesek_megtekintes'] == 1){
+			 $this->load->view('/system/body/admin/vezerlopult/v_admin_hozzaferesek', $data);
+            }
+            else{
+                $data['fejlec'] = 'Hiba!';
+                $data['uzenet'] = 'Nincs jogosultsága az adott oldal megtekintéséhez!';
+                $this->load->view('/system/body/dolgozo/vezerlopult/v_dolgozo_nincsJog', $data);
+            }
             $this->load->view('/system/footer/admin/v_admin_footer');
 		}
     }
@@ -38,7 +47,16 @@ class vezerloPult extends CI_Controller
             $data['main_title'] = SITETITLE;
             $data['site_title'] = SITETITLE .' :: Vezérlőpult -> Megrendelők';
             $this->load->view('/system/header/admin/v_admin_header', $data);
-			$this->load->view('/system/body/admin/vezerlopult/v_admin_megrendelok', $data);
+            $this->load->view('/system/body/admin/vezerlopult/v_vezerlopult_menu',$data);
+            $data['jogok'] = $this->m_dolgozok->dolgozoInfo($data['user_id']);
+            if($data['jogok']['megrendelok_megtekintes'] == 1){
+                $this->load->view('/system/body/admin/vezerlopult/v_admin_megrendelok', $data);
+            }
+            else{
+                $data['fejlec'] = 'Hiba!';
+                $data['uzenet'] = 'Nincs jogosultsága az adott oldal megtekintéséhez!';
+                $this->load->view('/system/body/dolgozo/vezerlopult/v_dolgozo_nincsJog', $data);
+            }
             $this->load->view('/system/footer/admin/v_admin_footer');
 		}
     }
@@ -53,7 +71,16 @@ class vezerloPult extends CI_Controller
             $data['main_title'] = SITETITLE;
             $data['site_title'] = SITETITLE .' :: Vezérlőpult -> Műveletek';
             $this->load->view('/system/header/admin/v_admin_header', $data);
-			$this->load->view('/system/body/admin/vezerlopult/v_admin_muveletek', $data);
+            $this->load->view('/system/body/admin/vezerlopult/v_vezerlopult_menu',$data);
+            $data['jogok'] = $this->m_dolgozok->dolgozoInfo($data['user_id']);
+            if($data['jogok']['muveletek_megtekintes'] == 1){
+			     $this->load->view('/system/body/admin/vezerlopult/v_admin_muveletek', $data);
+            }
+            else{
+                $data['fejlec'] = 'Hiba!';
+                $data['uzenet'] = 'Nincs jogosultsága az adott oldal megtekintéséhez!';
+                $this->load->view('/system/body/dolgozo/vezerlopult/v_dolgozo_nincsJog', $data);
+            }
             $this->load->view('/system/footer/admin/v_admin_footer');
 		}
     }
@@ -68,7 +95,16 @@ class vezerloPult extends CI_Controller
             $data['main_title'] = SITETITLE;
             $data['site_title'] = SITETITLE .' :: Vezérlőpult -> Gépi erőforrások';
             $this->load->view('/system/header/admin/v_admin_header', $data);
-			$this->load->view('/system/body/admin/vezerlopult/v_admin_gepieroforrasok', $data);
+            $this->load->view('/system/body/admin/vezerlopult/v_vezerlopult_menu',$data);
+            $data['jogok'] = $this->m_dolgozok->dolgozoInfo($data['user_id']);
+            if($data['jogok']['gepieroforrasok_megtekintes'] == 1){
+			     $this->load->view('/system/body/admin/vezerlopult/v_admin_gepieroforrasok', $data);
+            }
+            else{
+                $data['fejlec'] = 'Hiba!';
+                $data['uzenet'] = 'Nincs jogosultsága az adott oldal megtekintéséhez!';
+                $this->load->view('/system/body/dolgozo/vezerlopult/v_dolgozo_nincsJog', $data);
+            }
             $this->load->view('/system/footer/admin/v_admin_footer');
 		}
     }
@@ -83,7 +119,16 @@ class vezerloPult extends CI_Controller
             $data['main_title'] = SITETITLE;
             $data['site_title'] = SITETITLE .' :: Vezérlőpult -> Anyagok';
             $this->load->view('/system/header/admin/v_admin_header', $data);
-			$this->load->view('/system/body/admin/vezerlopult/v_admin_anyagok', $data);
+            $this->load->view('/system/body/admin/vezerlopult/v_vezerlopult_menu',$data);
+            $data['jogok'] = $this->m_dolgozok->dolgozoInfo($data['user_id']);
+            if($data['jogok']['anyagok_megtekintes'] == 1){
+			     $this->load->view('/system/body/admin/vezerlopult/v_admin_anyagok', $data);
+            }
+            else{
+                $data['fejlec'] = 'Hiba!';
+                $data['uzenet'] = 'Nincs jogosultsága az adott oldal megtekintéséhez!';
+                $this->load->view('/system/body/dolgozo/vezerlopult/v_dolgozo_nincsJog', $data);
+            }
             $this->load->view('/system/footer/admin/v_admin_footer');
 		}
     }
@@ -98,7 +143,16 @@ class vezerloPult extends CI_Controller
             $data['main_title'] = SITETITLE;
             $data['site_title'] = SITETITLE .' :: Vezérlőpult -> Változó költségek';
             $this->load->view('/system/header/admin/v_admin_header', $data);
-			$this->load->view('/system/body/admin/vezerlopult/v_admin_valtozoKoltsegek', $data);
+            $this->load->view('/system/body/admin/vezerlopult/v_vezerlopult_menu',$data);
+            $data['jogok'] = $this->m_dolgozok->dolgozoInfo($data['user_id']);
+            if($data['jogok']['valtozokoltsegek_megtekintes'] == 1){
+			     $this->load->view('/system/body/admin/vezerlopult/v_admin_valtozoKoltsegek', $data);
+            }
+            else{
+                $data['fejlec'] = 'Hiba!';
+                $data['uzenet'] = 'Nincs jogosultsága az adott oldal megtekintéséhez!';
+                $this->load->view('/system/body/dolgozo/vezerlopult/v_dolgozo_nincsJog', $data);
+            }
             $this->load->view('/system/footer/admin/v_admin_footer');
 		}
     }
@@ -113,7 +167,16 @@ class vezerloPult extends CI_Controller
             $data['main_title'] = SITETITLE;
             $data['site_title'] = SITETITLE .' :: Vezérlőpult -> Egyéb beállítások';
             $this->load->view('/system/header/admin/v_admin_header', $data);
-			$this->load->view('/system/body/admin/vezerlopult/v_admin_egyebBeallitasok', $data);
+            $this->load->view('/system/body/admin/vezerlopult/v_vezerlopult_menu',$data);
+            $data['jogok'] = $this->m_dolgozok->dolgozoInfo($data['user_id']);
+            if($data['jogok']['egyebbeallitasok_megtekintes'] == 1){
+			     $this->load->view('/system/body/admin/vezerlopult/v_admin_egyebBeallitasok', $data);
+            }
+            else{
+                $data['fejlec'] = 'Hiba!';
+                $data['uzenet'] = 'Nincs jogosultsága az adott oldal megtekintéséhez!';
+                $this->load->view('/system/body/dolgozo/vezerlopult/v_dolgozo_nincsJog', $data);
+            }
             $this->load->view('/system/footer/admin/v_admin_footer');
 		}
     }

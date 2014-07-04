@@ -60,12 +60,12 @@
                 <div id="menuFrame">
     				<div id="menu" class="brt">
     					<ul>
-    						<li class="brt{$active['index']}"><?php echo anchor('kernel/index','Főoldal');?></li>
-                            <li class="brt{$active['vezerlopult']}"><?php echo anchor('vezerloPult/index','Vezérlőpult');?></li>
-                            <li class="brt{$active['beszerzes']}"><a href="#" class="bra">Beszerzés</a></li>
-                            <li class="brt{$active['projektek']}"><?php echo anchor('Projektek/index','Termelés/Gazdálkodás');?></li>
-                            <li class="brt{$active['penzugy']}"><a href="#" class="bra">Pénzügy</a></li>
-                            <li class="brt{$active['munkaido']}"><a href="/nyilvantartasok.php" class="bra">Nyilvántartások</a></li>
+    						<li <?php  if($this->uri->segment(1)==="kernel") echo ' class="brt active_2"' ?>><?php echo anchor('kernel/index','Főoldal');?></li>
+                            <li <?php  if($this->uri->segment(1)==="vezerloPult") echo ' class="brt active_2"' ?>><?php echo anchor('vezerloPult/index','Vezérlőpult');?></li>
+                            <li <?php  if($this->uri->segment(1)==="beszerzes") echo ' class="brt active_2"' ?>><a href="#" class="bra">Beszerzés</a></li>
+                            <li <?php  if($this->uri->segment(1)==="Projektek") echo ' class="brt active_2"' ?>><?php echo anchor('Projektek/index','Termelés/Gazdálkodás');?></li>
+                            <li <?php  if($this->uri->segment(1)==="penzugy") echo ' class="brt active_2"' ?>><a href="#" class="bra">Pénzügy</a></li>
+                            <li <?php  if($this->uri->segment(1)==="nyilvantartasok") echo ' class="brt active_2"' ?>><a href="/nyilvantartasok.php" class="bra">Nyilvántartások</a></li>
                         </ul>
     				</div>
     				<!--<div id=\"bridge\">&nbsp;</div>-->
