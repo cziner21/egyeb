@@ -29,7 +29,7 @@ class m_dolgozok extends CI_Model
             $query = $this->db->get_where('dolgozok', array('id' => $p_id));
             if($query->num_rows() == 1){
                 foreach ($query->result() as $row){
-                    
+                 $jog['priv'] = $row->priv;   
                  $jog['vezerlopult_megtekintes'] = $row->vezerlopult_megtekintes;
             	 $jog['hozzaferesek_megtekintes'] = $row->hozzaferesek_megtekintes; 
             	 $jog['hozzaferesek_szerkesztes'] = $row->hozzaferesek_szerkesztes ;
@@ -91,6 +91,8 @@ class m_dolgozok extends CI_Model
                 var_dump("hiba a lekérdezésben");
              }
         }
+        
+    
         
         
     

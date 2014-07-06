@@ -38,18 +38,14 @@
 	
                         <div class="ajax_loader"></div>
 				            <form method="post" action="#" id="accessForm">
-                                <table class="other">
+                                <table id="table_id" class="display">
+                                    <thead>
+                                    <tr>
+                                        <th>UID</th><th>Felhasználónév</th><th>Teljes név</th><th>Státusz</th><th>Osztály</th><th>Hozzáadva</th><th>Utoljára itt</th><th><input class="checkbox checkBoxAll" type="checkbox"/></th>
+                                    </tr>
+                                    </thead>
 					               <tbody>
-                                      <tr class="fejlec">
-						              <td class="uid"><a href="#" class="sort ASC" rel="hozzaferes|uid|ASC">UID</a></td>
-    						              <td><a href="#" class="sort " rel="hozzaferes|username|">Felhasználónév</a></td>
-    						              <td><a href="#" class="sort " rel="hozzaferes|fullname|">Teljes név</a></td>
-    						              <td><a href="#" class="sort " rel="hozzaferes|enabled|">Státusz</a></td>
-    						              <td><a href="#" class="sort " rel="hozzaferes|class|">Osztály</a></td>
-    						              <td><a href="#" class="sort " rel="hozzaferes|added|">Hozzáadva</a></td>
-    						              <td><a href="#" class="sort " rel="hozzaferes|last_access|">Utoljára itt</a></td>
-    						              <td><input class="checkbox checkBoxAll" type="checkbox"/></td>
-					                  </tr>
+                                      
 		                              <?php
                                             //ide jön a felhasználók listázása
                                             $sum = count($dolgozok['id']);
@@ -57,15 +53,15 @@
                                             
                                             for($i = 0; $i < $sum ; $i++){
                                                 
-                                                echo '<tr class="adat">
-                                                        <td class="right uid">'.$dolgozok['id'][$i].'</td>
+                                                echo '<tr>
+                                                        <td>'.$dolgozok['id'][$i].'</td>
     		                                            <td>'. anchor('vezerloPult/dolgozoAdatlap/'.$dolgozok['id'][$i],$dolgozok['username'][$i]).'</td>
                                 						<td>'.$dolgozok['teljes_nev'][$i].'</td>
                                 						<td>'.$dolgozok['engedelyezve'][$i].'</td>
                                 						<td><b>'.$dolgozok['priv'][$i].'</b></td>
                                 						<td>'.$dolgozok['created'][$i].'</td>
                                 						<td>'.$dolgozok['last_login'][$i].'</td>
-                                						<td class="trcheck"><input class="checkbox" name="" value="" disabled="disabled" type="checkbox"></td>
+                                						<td><input class="checkbox" name="" value="" disabled="disabled" type="checkbox"></td>
 			                                          </tr>';
                                             }
                                       ?>
@@ -73,7 +69,9 @@
                                    </tbody>
                                 </table>
 				            </form>
-		
+		                  <script type="text/javascript">
+                            $('#table_id').DataTable();
+                            </script>
     				<div class="right">
     					<button aria-disabled="false" role="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" id="accessDeleteButton"><span class="ui-button-text">Kijelöltek törlése</span></button>
     				</div>

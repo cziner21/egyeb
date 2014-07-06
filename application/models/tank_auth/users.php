@@ -392,6 +392,30 @@ class Users extends CI_Model
 		$this->db->where('user_id', $user_id);
 		$this->db->delete($this->profile_table_name);
 	}
+    
+    /**
+     * Új dolgozó hozzáadása
+     * @param array
+     *
+     * @return void
+     */
+    function addNewDolgozo($data){
+        $data['created'] = date('Y-m-d H:i:s');
+		$data['activated'] = 1;
+
+		$this->db->insert($this->table_name, $data);
+        $this->db->where('username', $data['username']);
+        $query = $this->db->get($this->table_name);
+		if ($query->num_rows() == 1){
+		  $user_id;
+		  foreach($query->result() as $row){
+		      $user_id = $row->id;
+		  }
+          $this->create_profile($user_id);
+		}
+			
+		return NULL;
+    }
 }
 
 /* End of file users.php */

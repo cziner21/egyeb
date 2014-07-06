@@ -14,12 +14,17 @@
     	<link href="<?php echo base_url('themes/default/fileuploader.css');?>" rel="stylesheet" type="text/css" />
     
         <!--jquery ui, tabs, popups, etc...-->
-  	    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+  	    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css"/>
         <script src="//code.jquery.com/jquery-1.10.2.js"></script>
         <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+        <script src="<?php echo base_url('js/jquery.steps.js');?>"></script>
+          
+        <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="//cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
+        <link rel="stylesheet" href="//cdn.datatables.net/1.10.0/css/jquery.dataTables.css" />
         <!--//jquery ui-->
         
-    	<script type="text/javascript" src="<?php echo base_url('js/jquery-1.6.2.min.js');?>"></script>
+    	
     	<script type="text/javascript" src="<?php echo base_url('js/jquery-ui-1.8.16.custom.min.js');?>"></script>
     	<script type="text/javascript" src="<?php echo base_url('js/jquery.ui.datepicker-hu.js');?>"></script>
     	<script src="<?php echo base_url('js/jquery.validate.js');?>" type="text/javascript"></script>
@@ -33,13 +38,12 @@
     	<script src="<?php echo base_url('js/jqgrid/jquery.jqGrid.min.js');?>" type="text/javascript"></script>
     	<script src="<?php echo base_url('js/sap.list.js');?>" type="text/javascript"></script>    
     	<script type="text/javascript" src="<?php echo base_url('js/sap.root.js');?>"></script>
-    
-    	<script type="text/javascript">
-    		var currenttime = ".round((time()*1000))."
-    	</script>
+      
+    	
         
         <script type='text/javascript'>
            $(document).ready(function(){
+                         
              $( "#dialog" ).dialog({ width: 700 });
              var width = $( "#dialog" ).dialog( "option", "width" );
              // setter
@@ -54,7 +58,13 @@
               $(function() {
                 $( "#tabs" ).tabs();
               });
+              
+              $(function() {
+                $("#wizard").steps();
+              });
            });
+           
+    
         </script>
         
     </head>
@@ -74,7 +84,7 @@
     
     				<div id="headCuruser" class="bra">
     					<div class="float-right">
-    						<span class="padding-right">Szerver idő: <span id="serverTime"><?php echo date("H:i:s");?></span></span> [ <b><?php echo anchor('/auth/logout/','Kilépés');?></b> ]
+    						<span class="padding-right">Szerver idő: <span id="serverTime"></span></span> [ <b><?php echo anchor('/auth/logout/','Kilépés');?></b> ]
     					</div>
     					Üdv <b><?php echo $dolgozo_adatai['teljes_nev'];?></b>!
     				</div>

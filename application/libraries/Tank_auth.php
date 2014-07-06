@@ -148,6 +148,9 @@ class Tank_auth
 	{
 		return $this->ci->session->userdata('username');
 	}
+    
+    
+    
 
 	/**
 	 * Create new user on the site and return some data about it:

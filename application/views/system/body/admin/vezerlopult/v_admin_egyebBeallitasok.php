@@ -76,6 +76,7 @@
                 			<div id="tabConfigContent1922" class="ui-tabs-panel ui-widget-content">
                                 <table class="adatbekero">
                     				<tbody>
+                                        
                                         <tr>
                         					<td class="megnevezes right">1 kW/óra díja:</td>
                         					<td class="adat left">52 Ft</td>
@@ -87,9 +88,13 @@
                         				</tr>
                         				
                         				<tr>
-                        					<td class="megnevezes right">Szállítási költség egy irányban számolva:</td>
+                        					<td class="megnevezes right">Szállítási költség (FT/KM):</td>
                         					<td class="adat left">180 Ft</td>
                         				</tr>
+                                        <tr>
+                                            <td class="megnevezes right">Cég logó:</td>
+                                            <td class="adat left"><img src="<?php echo base_url('uploads/site_logo/siteLogo.png');?>"/></td>
+                                        </tr>
                     				</tbody>
                                 </table>
                             </div>

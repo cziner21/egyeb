@@ -107,6 +107,97 @@ class Auth extends CI_Controller
 
 		$this->_show_message($this->lang->line('auth_message_logged_out'));
 	}
+    
+    /**
+     * Új dolgozó hozzáadása a termelés irányítási rendszerhez
+     */
+    function addDolgozo(){
+        $this->ci =& get_instance();
+
+		$this->ci->load->config('tank_auth', TRUE);
+        //var_dump("adddolgozó!!");
+        $this->load->model('/system/m_dolgozok');
+        if (!$this->tank_auth->is_logged_in()) 
+			redirect('/auth/login/');
+        else{
+            
+                 $data['username'] = $_POST['username'];
+                 $data['teljes_nev'] = $_POST['fullname'];
+                 /*if($_POST['password'] != $_POST['password2']){
+                    var_dump("hiba a két jelszó nem egyezik!");
+                 }*/
+                 
+                 
+                 $hasher = new PasswordHash(
+					$this->ci->config->item('phpass_hash_strength', 'tank_auth'),
+					$this->ci->config->item('phpass_hash_portable', 'tank_auth'));
+			     $hashed_password = $hasher->HashPassword($_POST['password']);
+                 $data['password'] = $hashed_password;
+                 
+                 if(isset($_POST['menu_vezerlopult']))
+                 $data['vezerlopult_megtekintes'] = $_POST['menu_vezerlopult'];
+                 if(isset($_POST['hozzaferesek_megtekintese']))
+                 $data['hozzaferesek_megtekintes'] = $_POST['hozzaferesek_megtekintese'];
+                 /*if(isset($_POST['menu_vezerlopult']))
+            	 $data['hozzaferesek_szerkesztes'] = $_POST['hozzaferesek_szerkesztese'];
+                 if(isset($_POST['menu_vezerlopult']))
+            	 $data['megrendelok_megtekintes'] = $_POST['megrendelok_megtekintese'];
+            	 if(isset($_POST['menu_vezerlopult']))
+                 $data['megrendelok_szerkesztes'] = $_POST['megrendelok_szerkesztese'];
+            	 if(isset($_POST['menu_vezerlopult']))
+                 $data['muveletek_megtekintes'] = $_POST['muvtartktg_megtekintese'];
+            	 if(isset($_POST['menu_vezerlopult']))
+                 $data['muveletek_szerkesztes'] = $_POST['muvtartktg_szerkesztese'];
+            	 if(isset($_POST['menu_vezerlopult']))
+                 $data['gepieroforrasok_megtekintes'] = $_POST['gepi_erof_megtekintese'];
+            	 if(isset($_POST['menu_vezerlopult']))
+                 $data['gepieroforrasok_szerkesztes'] = $_POST['gepi_erof_szerkesztese'];
+            	 if(isset($_POST['menu_vezerlopult']))
+                 $data['anyagok_megtekintes'] = $_POST['anyagok_megtekintese'];
+            	 if(isset($_POST['menu_vezerlopult']))
+                 $data['anyagok_szerkesztes'] = $_POST['anyagok_szerkesztese'];
+            	 if(isset($_POST['menu_vezerlopult']))
+                 $data['valtozokoltsegek_megtekintes'] = $_POST['valtozo_ktg_megtekintese'];
+            	 if(isset($_POST['menu_vezerlopult']))
+                 $data['valatozokoltsegek_szerkesztes'] = $_POST['valtozo_ktg_szerkesztese'];
+            	 if(isset($_POST['menu_vezerlopult']))
+                 $data['egyebbeallitasok_megtekintes'] = $_POST['egyeb_beallitasok_megtekintese'];
+            	 if(isset($_POST['menu_vezerlopult']))
+                 $data['egyebbeallitasok_szerkesztes'] = $_POST['egyeb_beallitasok_szerkesztese'];
+            	 if(isset($_POST['menu_vezerlopult']))
+                 $data['beszerzes_megtekintes '] = $_POST['menu_beszerzes'];
+            	 if(isset($_POST['menu_vezerlopult']))
+                 $data['termeles_megtekintes'] = $_POST['menu_termeles_gazdalkodas'];
+            	 if(isset($_POST['menu_vezerlopult']))
+                 $data['arajanlatok_megtekintes'] = $_POST['arajanlatok_megtekintes'];
+            	 if(isset($_POST['menu_vezerlopult']))
+                 $data['arajanlatok_szerkesztes'] = $_POST['arajanlatok_szerkesztes'];
+            	 if(isset($_POST['menu_vezerlopult']))
+                 $data['futoprojektek_megtekintes'] = $_POST['futoprojektek_megtekintes']; 
+            	 if(isset($_POST['menu_vezerlopult']))
+                 $data['futoprojektek_szerkesztes'] = $_POST['futoprojektek_szerkesztes'];
+            	 if(isset($_POST['menu_vezerlopult']))
+                 $data['ellenorzes_megtekintes'] = $_POST['ellenorzes_megtekintes'];
+            	 if(isset($_POST['menu_vezerlopult']))
+                 $data['ellenorzes_szerkesztes'] = $_POST['ellenorzes_szerkesztes'];
+            	 if(isset($_POST['menu_vezerlopult']))
+                 $data['kiszallitas_megtekintes'] = $_POST['kiszallitas_megtekintes'];
+            	 if(isset($_POST['menu_vezerlopult']))
+                 $data['kiszallitas_szerkesztes'] = $_POST['kiszallitas_szerkesztes'];*/
+            	 //$data['kiszallitva_szerkesztes'] = $_POST[''];
+            	 //$data['elutasitva_megtekintes'] = $_POST[''];
+            	 //$data['elutasitva_szerkesztes'] $_POST[''];
+                
+                $data['priv'] = "dolgozó";
+                
+                //$this->load->model('/tank_auth/users');   
+                $this->users->addNewDolgozo($data);
+                }
+                
+        
+        
+    }
+    
 
 	/**
 	 * Register user on the site

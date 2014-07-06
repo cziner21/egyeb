@@ -8,6 +8,11 @@
         </div>
         <div id="contentRight">
                          
+                         <strong>update 2014.07.04.</strong>
+                         <pre style="margin-left: 3%;">
+                            felhazsnálókezelés
+                         </pre>
+                         
                          <strong>update 2014.07.03.</strong>
                          <pre style="margin-left: 3%;">
                             Átírás folytatása:
