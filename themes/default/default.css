@@ -482,7 +482,7 @@ span.fastSelect {
 .sMessage.notify {
   background-color: #DEDEDE;
 }
-.sMessage.success {
+.sMessage.ok {
   background-color: #BBFFBB;
 }
 .sMessage.error {

@@ -1,29 +1,22 @@
 <div id="contentRight">
-                <div id="ajaxReply" class="sMessage bra margin hidden">
+<div id="ajaxReply" class="sMessage bra margin hidden">
                     <div class="controls">
                         <a href="#" class="aRblock ui-icon ui-icon-close"></a>
     		        </div>
     		        <div class="message"></div>
     		        <div class="clear"></div>
-                </div>
+                </div>               
 		
-<div id="dialog" title="Új hozzáférés">
-<div id="tabs">
-                    <ul>
-                    <li><a href="#tabs-1">Adatok</a></li>
-                    
-                    </ul>
-<div id="tabs-1">
-		<form method="post" action="../auth/addDolgozo" id="userAddForm">
+
+        
+
+		<form method="post" action="#" id="userAddForm">
 			<table class="adatbekero" align="center">
 				<tbody><tr>
 					<td class="megnevezes right form">Felhasználónév<em class="red">*</em></td>
-					<td class="adat left"><input name="username" class="text" type="text"></td>
+					<td class="adat left"><input id="usernameText" name="username" class="text" type="text"/></td>
 				</tr>
-				<tr>
-					<td class="megnevezes right form">Teljes név<em class="red">*</em></td>
-					<td class="adat left"><input name="fullname" class="text" type="text"></td>
-				</tr>
+				
 				<tr>
 					<td class="megnevezes right form">Jelszó<em class="red">*</em></td>
 					<td class="adat left"><input name="password" id="password" class="text" type="password"></td>
@@ -32,9 +25,20 @@
 					<td class="megnevezes right form">Jelszó megerősítése<em class="red">*</em></td>
 					<td class="adat left"><input name="password2" class="text" type="password"></td>
 				</tr>
+                <tr>
+                    <td class="megnevezes right form">Osztály<em class="red">*</em></td>
+                    <td class="adat left">
+                        <select id="osztaly">                                
+                                    <option value="dolgozó">Dolgozó</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="üzemvezető">Üzemvezető</option>
+                                    <option value="ellenőr">Ellenőr</option>
+                        </select>
+                    </td>
+                </tr>
 				<tr>
 					<td class="megnevezes right form">Engedélyezve</td>
-					<td class="adat left"><input name="enabled" class="checkbox" type="checkbox"></td>
+					<td class="adat left"><input name="enabled" class="checkbox" type="checkbox" checked="checked"/></td>
 				</tr>
                 
                 <tr>
@@ -67,28 +71,19 @@
                         <input name="kiszallitas_szerkesztes" value="1" type="checkbox"> <span class="checkbox_szoveg pointer">Kiszállítás szerkesztése</span><br>
 					</td>
 				</tr>
-                
+                <tr>
+                    <td><input type="hidden" name="baseUrl" value="<?php echo base_url();?>" /></td>
+                </tr>
                 <tr>
                 <td class="megnevezes right form"></td>
-                <td class="adat left"><input type="submit" value="Létrehoz"/></td>
+                <td class="adat left"><input type="submit" id="addDolgozoBtn" value="Létrehoz"/></td>
                 </tr>
                 	</tbody></table>
                     
 		</form>
-         </div>
-			
-                
-                    
-                    
-                   
-                    
-                
-                
-                
-				
-		
-        </div><!--tabs-->
-</div><!--dilaog-->
+        
+         
+
 </div><!--contentRight-->
 		
 	

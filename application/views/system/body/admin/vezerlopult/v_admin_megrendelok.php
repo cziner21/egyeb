@@ -19,7 +19,7 @@
 
 			        <div class="content cont-close">
                         <?php //ide dinamikusan a gomb ?>
-	                   <button aria-disabled="false" role="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" id="accessNewButton"><span class="ui-button-text">Új hozzáférés</span></button>
+	                   <?php echo anchor('vezerloPult/addMegrendelo','<button aria-disabled="false" role="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" id="opener"><span class="ui-button-text">Új megrendelő</span></button>');?>
                     </div>    
                 </div>
                 

@@ -70,7 +70,34 @@
                                 </table>
 				            </form>
 		                  <script type="text/javascript">
-                            $('#table_id').DataTable();
+                            $('#table_id').DataTable({
+                                
+                                "aoColumnDefs": [
+                                { 'bSortable': false, 'aTargets': [ 7 ] }
+                                ],
+                                
+                                // Nyelvi beállítások
+                        	    'oLanguage': {
+                        	 
+                        	      // Lapozó beállítása
+                        	      'oPaginate': {
+                        	        'sFirst': 'Első oldal',
+                        	        'sLast': 'Utolsó oldal',
+                        	        'sNext': 'Következő',
+                        	        'sPrevious': 'Előző',
+                        	      },
+                        	 
+                        	      // Egyéb nyelvi beállítások
+                        	      'sSearch': 'Keresés:',
+                        	      'sLengthMenu': 'Mutat: _MENU_',
+                                  'sInfo': 'Megjelenítve: _START_ - _END_ a(z) _TOTAL_ rekordból',
+                        	      'sInfoEmpty': 'Megjelenítve: 0 rekord a 0 rekordból',
+                        	      'sInfoFiltered': '(keresés _MAX_ rekordban)',
+                        	      'sEmptyTable': 'Nincs megjeleníthető adat',
+                        	      'sZeroRecords': 'A szűrési feltételnek egyetlen rekord sem felel meg',
+                        	      'sProcessing': 'A feldolgozás folyamatban...'
+                        	    }
+                            });
                             </script>
     				<div class="right">
     					<button aria-disabled="false" role="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" id="accessDeleteButton"><span class="ui-button-text">Kijelöltek törlése</span></button>

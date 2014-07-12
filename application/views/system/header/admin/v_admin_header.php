@@ -15,11 +15,14 @@
     
         <!--jquery ui, tabs, popups, etc...-->
   	    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css"/>
+        <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
         <script src="//code.jquery.com/jquery-1.10.2.js"></script>
         <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
         <script src="<?php echo base_url('js/jquery.steps.js');?>"></script>
-          
-        <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+         
+        <script src="<?php echo base_url('js/current_time.js');?>"></script>  
+        <script src="<?php echo base_url('js/tabcontrol.js');?>"></script>  
+        <script src="<?php echo base_url('js/vezerlopult/addDolgozo.js');?>"></script>
         <script src="//cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
         <link rel="stylesheet" href="//cdn.datatables.net/1.10.0/css/jquery.dataTables.css" />
         <!--//jquery ui-->
@@ -43,6 +46,8 @@
         
         <script type='text/javascript'>
            $(document).ready(function(){
+            
+            
                          
              $( "#dialog" ).dialog({ width: 700 });
              var width = $( "#dialog" ).dialog( "option", "width" );
@@ -59,9 +64,7 @@
                 $( "#tabs" ).tabs();
               });
               
-              $(function() {
-                $("#wizard").steps();
-              });
+              
            });
            
     
@@ -84,7 +87,7 @@
     
     				<div id="headCuruser" class="bra">
     					<div class="float-right">
-    						<span class="padding-right">Szerver idő: <span id="serverTime"></span></span> [ <b><?php echo anchor('/auth/logout/','Kilépés');?></b> ]
+    						<span class="padding-right">Szerver idő: <span id="clock"></span></span> [ <b><?php echo anchor('/auth/logout/','Kilépés');?></b> ]
     					</div>
     					Üdv <b><?php echo $dolgozo_adatai['teljes_nev'];?></b>!
     				</div>

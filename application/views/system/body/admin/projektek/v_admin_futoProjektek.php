@@ -1,19 +1,5 @@
-<div id="contentFrame">
-<div id="content" class="brr">
 
-<div id="contentLeft">
-				<!-- <h2>Műveleti panel</h2> -->
-				<div id="menuLeft">
-					<ul>	
-						<li><?php echo anchor('projektek/index','Árajánlatok<span>Itt lehet az árajánlatokat felvenni.</span>');?></li>
-						<li class="active"><?php echo anchor('projektek/futoProjektek','Projektek<span>Itt vannak a futó projektek</span>');?></li>
-						<li><?php echo anchor('projektek/ellenorzes','Ellenőrzes<span>Itt vannak azok a projektek amik már legyártásra kerültek, de még ellenőrzés alatt vannak.</span>');?></li>
-                        <li><?php echo anchor('projektek/kiszallitas','Kiszállitas<span>Itt vannak a kiszállított és kiszállítás alatt lévő projektek</span>');?></li>
-                        <li><?php echo anchor('projektek/kiszallitva','Kiszállítva / Archiv<span>Itt vannak kiszállított, azaz végetért projektek</span>');?></li>
-						<li><?php echo anchor('projektek/elutasitva','Elutasítva<span>Itt vannak az elutasított árajánlatok</span>');?></li>	
-					</ul>
-				</div>
-	</div><div id="contentRight"><script src="javascript/projektek/sap.meretezo.js" type="text/javascript"></script>
+    <div id="contentRight"><script src="javascript/projektek/sap.meretezo.js" type="text/javascript"></script>
 	<div id="ajaxReply" class="sMessage bra margin hidden">
 		<div class="controls">
 			<a href="#" class="aRblock ui-icon ui-icon-close"></a>
@@ -35,38 +21,78 @@
 				<div id="pagerSet" class="hidden">projektek|pid|DESC|</div>
 				<form method="post" action="/sap/projektek.php?page=projektek" id="projectForm">
 
-				<table class="other">
-					<tbody><tr class="fejlec">
-						<td class="pid"><a href="#" class="sort DESC" rel="projektek|pid|DESC">PID</a></td>
-						<td><a href="#" class="sort " rel="projektek|project_name|">Projekt név</a></td>
-						<td><a href="#" class="sort " rel="projektek|customer_name|">Megrendelő</a></td>
-						<td><a href="#" class="sort " rel="projektek|status|">Státusz</a></td>
-						<td><a href="#" class="sort " rel="projektek|added|">Hozzáadva</a></td>
-						<td><input class="checkbox checkBoxAll" type="checkbox"></td>
-					</tr>
-		
-					<tr class="adat">
-						<td class="right pid">25</td>
-						<td><a href="#" class="projektInformation" rel="25"><b>NT-02</b></a></td>
-						<td><a href="#" class="customerInformation" rel="30"><b>zf hungária1</b></a></td>
-						<td>Gyártás alatt</td>
-						<td>2014. jan. 21. 09:33</td>
-						<td class="trcheck"><input class="checkbox chkbox" name="pid[]" value="25" type="checkbox"></td>
-					</tr>
-			
-				</tbody></table>
-				</form>
+					<table id="table_arajanlat" class="display">
+                                    <thead>
+                                    <tr>
+                                        <th>Munkaszám</th><th>Hozzáadva</th><th>Státusz</th><th>Megrendelő</th><th><input class="checkbox checkBoxAll" type="checkbox"/></th>
+                                    </tr>
+                                    </thead>
+            		
+            					    <tbody>
+                                      
+		                              <?php
+                                            //ide jön a munkák listázása
+                                            $sum = count($munkak['munkaszam']);
+                                            //var_dump($sum);
+                                            
+                                            for($i = 0; $i < $sum ; $i++){
+                                                
+                                                echo '<tr>
+                                                        <td>'.$munkak['munkaszam'][$i].'</td>
+    		                                            <td>'.$munkak['hozzaadva'][$i].'</td>
+                                						<td>'.$munkak['statusz'][$i].'</td>
+                                						<td>'. anchor('vezerloPult/megrendeloAdatlap/'.$munkak['megrendelo'][$i],$munkak['megrendelo'][$i]).'</td>
+                                						<td><input class="checkbox" name="" value=""  type="checkbox"></td>
+			                                          </tr>';
+                                            }
+                                      ?>
+                                      
+                                   </tbody>
+                            </table>
+            				</form>
+            		        <script type="text/javascript">
+                            $('#table_arajanlat').DataTable({
+                                
+                                "aoColumnDefs": [
+                                { 'bSortable': false, 'aTargets': [ 4 ] }
+                                ],
+                                
+                                // Nyelvi beállítások
+                        	    'oLanguage': {
+                        	 
+                        	      // Lapozó beállítása
+                        	      'oPaginate': {
+                        	        'sFirst': 'Első oldal',
+                        	        'sLast': 'Utolsó oldal',
+                        	        'sNext': 'Következő',
+                        	        'sPrevious': 'Előző',
+                        	      },
+                        	 
+                        	      // Egyéb nyelvi beállítások
+                        	      'sSearch': 'Keresés:',
+                        	      'sLengthMenu': 'Mutat: _MENU_',
+                                  'sInfo': 'Megjelenítve: _START_ - _END_ a(z) _TOTAL_ rekordból',
+                        	      'sInfoEmpty': 'Megjelenítve: 0 rekord a 0 rekordból',
+                        	      'sInfoFiltered': '(keresés _MAX_ rekordban)',
+                        	      'sEmptyTable': 'Nincs megjeleníthető adat',
+                        	      'sZeroRecords': 'A szűrési feltételnek egyetlen rekord sem felel meg',
+                        	      'sProcessing': 'A feldolgozás folyamatban...'
+                        	    }
+                            });
+                            </script>  
+				
 		
 				<div class="right">
 					<button aria-disabled="false" role="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" id="arajanlatDeleteButton"><span class="ui-button-text">Kijelöltek törlése</span></button>
 				</div>
 
-				<script src="javascript/projektek/sap.projektList.js" type="text/javascript"></script>
-				<script src="javascript/sap.table.js" type="text/javascript"></script>
+			
+            			  </div>
+			
+                				
 		
-			</div>
-		</div>
-	</div></div>
-			<div class="clear"></div>
-		</div>
-        </div>
+        </div><!--tabs-->
+</div><!--dilaog-->
+</div><!--contentRight-->
+		
+	

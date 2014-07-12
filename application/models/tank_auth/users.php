@@ -400,21 +400,33 @@ class Users extends CI_Model
      * @return void
      */
     function addNewDolgozo($data){
-        $data['created'] = date('Y-m-d H:i:s');
-		$data['activated'] = 1;
-
-		$this->db->insert($this->table_name, $data);
-        $this->db->where('username', $data['username']);
-        $query = $this->db->get($this->table_name);
-		if ($query->num_rows() == 1){
-		  $user_id;
-		  foreach($query->result() as $row){
-		      $user_id = $row->id;
-		  }
-          $this->create_profile($user_id);
-		}
+        
+        try{
+            $data['created'] = date('Y-m-d H:i:s');
+    		$data['activated'] = 1;
+    
+    		$this->db->insert($this->table_name, $data);
+            $this->db->where('username', $data['username']);
+            $query = $this->db->get($this->table_name);
+    		if ($query->num_rows() == 1){
+    		  $user_id;
+    		  foreach($query->result() as $row){
+    		      $user_id = $row->id;
+    		  }
+              $this->create_profile($user_id);
+              
+            }
+            
+            return true;
+        }
+        catch(Exception $ex){
+            //$msg .= "Nem sikerült a dolgozót felvinni az adatbázisba!\n".$ex->getMessage()."\n";
+            
+            return false;
+        }
 			
-		return NULL;
+	
+        
     }
 }
 

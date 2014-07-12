@@ -6,7 +6,7 @@ class m_dolgozok extends CI_Model
     {
         $dolgozo = array();
         if ($userId != null) {
-            $query = $this->db->get_where('user_profiles', array('id' => $userId));
+            $query = $this->db->get_where('user_profiles', array('user_id' => $userId));
             if ($query->num_rows() == 1) {
                 foreach ($query->result() as $row) {
                     //$dolgozo['id'] = $row->id;
@@ -29,6 +29,7 @@ class m_dolgozok extends CI_Model
             $query = $this->db->get_where('dolgozok', array('id' => $p_id));
             if($query->num_rows() == 1){
                 foreach ($query->result() as $row){
+                 $jog['username'] = $row->username;
                  $jog['priv'] = $row->priv;   
                  $jog['vezerlopult_megtekintes'] = $row->vezerlopult_megtekintes;
             	 $jog['hozzaferesek_megtekintes'] = $row->hozzaferesek_megtekintes; 
