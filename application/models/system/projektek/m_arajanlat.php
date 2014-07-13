@@ -17,9 +17,7 @@ class m_arajanlat extends CI_Model
                  
                 return $list;
              }
-             else{
-                var_dump("hiba a lekérdezésben");
-             }
+            
     }
     /**
      * @param = array
@@ -36,6 +34,16 @@ class m_arajanlat extends CI_Model
         catch(exception $ex){
             $msg = $ex->getMessage();
         }
+    }
+    
+    /**
+     * Árajánlat státusza
+     * @param varchar(16)
+     */
+    function getArajanlatStatusz($aid){
+        $this->db->select('statusz');
+        $query = $this->db->get('arajanlat');
+        $this->db->where('ajanlat_id', $aid); 
     }
     
 }

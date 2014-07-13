@@ -6,7 +6,7 @@ class Projektek extends CI_Controller
         parent::__construct();
         //$this->output->enable_profiler(TRUE);
 		$this->load->helper('url');
-		$this->load->library('tank_auth');
+		$this->load->library(array('tank_auth','form_validation'));
         $this->load->model('/system/m_header');
         $this->load->model('/system/m_dolgozok');
         $this->load->model('/system/projektek/m_arajanlat');
@@ -139,21 +139,70 @@ class Projektek extends CI_Controller
             $data['dolgozo_adatai'] = $this->m_dolgozok->getDolgozoData($data['user_id']);
             $data['main_title'] = SITETITLE;
             $data['site_title'] = SITETITLE .' :: Projektek -> Árajánlatok';
-            $this->load->view('/system/header/admin/v_admin_header', $data);
-            $this->load->view('/system/body/admin/projektek/v_projektek_menu',$data);
+            
             $data['jogok'] = $this->m_dolgozok->dolgozoInfo($data['user_id']);
             if($data['jogok']['arajanlatok_szerkesztes'] == 1){
-             //$data['arajanlatok'] = $this->m_arajanlat->listArajanlatok();
-			 $this->load->view('/system/body/admin/projektek/v_admin_addArajanlat', $data);
+            
+            
+              
+                     
+                
+                
+                        
+                    
+                    $this->load->view('/system/header/admin/v_admin_header', $data);
+                    $this->load->view('/system/body/admin/projektek/v_projektek_menu',$data);
+                    //$data['jogok'] = $this->m_dolgozok->dolgozoInfo($data['user_id']);
+                    //if($data['jogok']['arajanlatok_szerkesztes'] == 1){
+                     //$data['arajanlatok'] = $this->m_arajanlat->listArajanlatok();
+        			 $this->load->view('/system/body/admin/projektek/v_admin_addArajanlat', $data);
+                     $this->load->view('/system/footer/admin/v_admin_footer');
+                /*}
+                else{
+                    var_dump($_POST);    
+                    $data = $_POST;
+                    $data['statusz'] = "készítés_alatt";
+                    $this->m_arajanlat->addArajanlat($data);
+                    redirect('projektek');
+                }*/
+            
             }
             else{
+                $this->load->view('/system/header/admin/v_admin_header', $data);
+                $this->load->view('/system/body/admin/projektek/v_projektek_menu',$data);
                 $data['fejlec'] = 'Hiba!';
                 $data['uzenet'] = 'Nincs jogosultsága az adott oldal megtekintéséhez!';
                 $this->load->view('/system/body/dolgozo/vezerlopult/v_dolgozo_nincsJog', $data);
+                $this->load->view('/system/footer/admin/v_admin_footer');
             }
-            $this->load->view('/system/footer/admin/v_admin_footer');
+            
 		}
     }
+    
+    function insertArajanlat(){
+    print_r("itt vagyok");
+                    $data = $_POST;
+                    $data['statusz'] = "készítés_alatt";
+                    $this->m_arajanlat->addArajanlat($data);
+                    redirect('projektek');
+    }
+    
+    function generateMunka(){
+        $munka['projekt_nev'] = "kisgalamb";
+        $munka['megrendeles_datuma'] = '2012-03-06 17:33:07';
+        $munka['hatarido'] = '2012-03-08 11:33:07';
+        $munka['statusz'] = 2;
+        $munka['arajanlat_id'] = "aj_01";
+        $this->m_futoProjektek->addMunka($munka);
+        		
+    }
+    
+    function searchMegrendelo(){
+        //echo 
+        return json_encode("adat");
+    }
+    
+    
 }
 
 ?>

@@ -17,9 +17,37 @@ class m_futoprojektek extends CI_Model
                  
                 return $list;
              }
-             else{
-                var_dump("hiba a lekérdezésben");
-             }
+             
+    }
+    
+    
+    /**
+     * @param array
+     * Új munkaszámot úgy generálok, hogy megnézem az utolsó munkaszámot a táblában,
+     * majd ahoz hozzáadok egyet.
+     */
+    function addMunka($munka){       
+        $regiszam;
+        $currentYear = date("Y");
+        
+        $q = "select munkaszam from munka order by hozzadva desc limit 1";
+        $query = $this->db->query($q);
+        if($query->num_rows() !==0){
+            foreach($query->result() as $row){
+                $regiszam = $row->munkaszam;
+            }
+            $regisorszam = explode("-",$regiszam);
+            $sorszam = (int)$regisorszam[1];
+            $ujsorszam = $sorszam + 1;
+            $josorszam = sprintf("%04d", $ujsorszam);
+            $munka['munkaszam'] = 'NT' . $currentYear . '-' . $josorszam;
+        }
+        else{         
+            $munka['munkaszam'] = 'NT' . $currentYear . '-0001'; 
+        }        
+        $this->db->insert('munka',$munka);       
+        return true;
+        
     }
     
 }

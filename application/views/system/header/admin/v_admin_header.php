@@ -23,6 +23,7 @@
         <script src="<?php echo base_url('js/current_time.js');?>"></script>  
         <script src="<?php echo base_url('js/tabcontrol.js');?>"></script>  
         <script src="<?php echo base_url('js/vezerlopult/addDolgozo.js');?>"></script>
+        <script src="<?php echo base_url('js/projekt/arajanlat.js');?>"></script>
         <script src="//cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
         <link rel="stylesheet" href="//cdn.datatables.net/1.10.0/css/jquery.dataTables.css" />
         <!--//jquery ui-->
