@@ -109,7 +109,21 @@ class vezerloPult extends CI_Controller
                 $this->load->view('/system/body/dolgozo/vezerlopult/v_dolgozo_nincsJog', $data);
             }
             $this->load->view('/system/footer/admin/v_admin_footer');
+        }
     }
+    
+    function megrendeloAdatlap($id){
+        //$data['jogok'] = $this->m_dolgozok->dolgozoInfo($data['user_id']);
+        $data['user_id']	= $this->tank_auth->get_user_id();
+			$data['username']	= $this->tank_auth->get_username();
+            $data['dolgozo_adatai'] = $this->m_dolgozok->getDolgozoData($id);
+            $data['jogok'] = $this->m_dolgozok->dolgozoInfo($id);
+            $data['main_title'] = SITETITLE;
+            $data['site_title'] = SITETITLE .' :: Vezérlőpult -> Hozzáférések';
+            $this->load->view('/system/header/admin/v_admin_header', $data);
+            $this->load->view('/system/body/admin/vezerlopult/v_vezerlopult_menu',$data);
+        $this->load->view('/system/body/admin/vezerlopult/hozzaferesek/v_admin_dolgozoInfo', $data);
+        $this->load->view('/system/footer/admin/v_admin_footer');
     }
     
     function muveletek(){

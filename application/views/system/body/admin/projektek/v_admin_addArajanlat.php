@@ -19,7 +19,7 @@
 				
 				<tr>
 					<td class="megnevezes right form">Megrendelő<em class="red">*</em></td>
-					<td class="adat left"><input type="text" name="megrendelo_megrendelo_id" class="text" id="megrendelo_megrendelo_id" placeholder="Kezdjen el gépelni a kereséshez..." />
+					<td class="adat left"><form method="post" id="serachMegrendelo" action="../projektek/searchMegrendelo"><input type="text" name="megrendelo_megrendelo_id" class="text" id="megrendelo_megrendelo_id" placeholder="Kezdjen el gépelni a kereséshez..." /></form>
                                     <div id="finalResult"></div></td>
 				</tr>
 				<tr>

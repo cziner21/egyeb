@@ -26,8 +26,9 @@ $(document).ready(function() {
                     success : function(msg){
                         $('#ajaxReply').removeClass().addClass('sMessage bra margin ok').fadeOut(200).fadeIn(200).find("div.message").html("Sikeres felvitel!");
                     },
-                    error : function(){
-                        $('#ajaxReply').removeClass().addClass('sMessage bra margin error').fadeOut(200).fadeIn(200).find("div.message").html("Nem sikerült felvenni a felhasználót!");                        
+                    error : function(msg){
+                        alert(msg);
+                        //$('#ajaxReply').removeClass().addClass('sMessage bra margin error').fadeOut(200).fadeIn(200).find("div.message").html(msg);                        
                     }               
                 })
                 return false;  

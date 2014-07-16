@@ -78,5 +78,32 @@ class m_megrendelo extends CI_Model
         return;
     }
     
+    /**
+     * Megrednelő keresése
+     */
+     function searchMegrendelo($key){
+        $like_search = '%'. $this->db->escape_like_str($key). '%';
+        $query = $this->db->query("
+                    SELECT nev, varos FROM megrendelo
+                    WHERE nev LIKE '$like_search'
+                    ORDER BY nev
+                ");
+        
+        $results = array();
+                
+                if($query->num_rows() > 0){
+                    foreach($query->result() as $row){
+                        $results[] = array(
+                          'nev' => $row->nev,
+                          'varos' => $row->varos                       
+                        );
+                    }
+                }
+          
+        		return $results;
+
+
+     }
+    
 }
 ?>

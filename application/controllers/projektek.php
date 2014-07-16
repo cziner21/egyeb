@@ -180,7 +180,7 @@ class Projektek extends CI_Controller
     }
     
     function insertArajanlat(){
-    print_r("itt vagyok");
+    //print_r("itt vagyok");
                     $data = $_POST;
                     $data['statusz'] = "készítés_alatt";
                     $this->m_arajanlat->addArajanlat($data);
@@ -188,18 +188,24 @@ class Projektek extends CI_Controller
     }
     
     function generateMunka(){
-        $munka['projekt_nev'] = "kisgalamb";
+        $munka['projekt_nev'] = "köszörűfej";
         $munka['megrendeles_datuma'] = '2012-03-06 17:33:07';
         $munka['hatarido'] = '2012-03-08 11:33:07';
         $munka['statusz'] = 2;
-        $munka['arajanlat_id'] = "aj_01";
+        $munka['arajanlat_id'] = 2;
         $this->m_futoProjektek->addMunka($munka);
-        		
+        redirect('projektek/futoProjektek');		
     }
     
     function searchMegrendelo(){
-        //echo 
-        return json_encode("adat");
+        //var_dump("search");
+        $newData = $_POST['tomb'];
+        $sk = htmlspecialchars(stripslashes($newData['0']));
+        $this->load->model('/system/vezerlopult/m_megrendelo');
+        
+        
+        $msg = $this->m_megrendelo->searchMegrendelo($sk);
+        echo json_encode($msg);
     }
     
     
