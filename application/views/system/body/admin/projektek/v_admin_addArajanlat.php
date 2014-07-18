@@ -7,7 +7,7 @@
     		        <div class="clear"></div>
                 </div>               
 		
-
+        
         
 
 		<form method="post" action="../projektek/insertArajanlat" id="arajanlatForm">
@@ -19,17 +19,17 @@
 				
 				<tr>
 					<td class="megnevezes right form">Megrendelő<em class="red">*</em></td>
-					<td class="adat left"><form method="post" id="serachMegrendelo" action="../projektek/searchMegrendelo"><input type="text" name="megrendelo_megrendelo_id" class="text" id="megrendelo_megrendelo_id" placeholder="Kezdjen el gépelni a kereséshez..." /></form>
-                                    <div id="finalResult"></div></td>
+					<td class="adat left"><input type="text" name="megrendelo_megrendelo_id" class="text" id="megrendelo_megrendelo_id" />
+                                  
 				</tr>
 				<tr>
 					<td class="megnevezes right form">Árajánlat kérés dátuma<em class="red">*</em></td>
-					<td class="adat left"><input id="ajanlatkeres_datuma" name="ajanlatkeres_datuma" class="text hasDatepicker" type="text"/></td>
+					<td class="adat left"><input id="ajanlatkeres_datuma" name="ajanlatkeres_datuma" class="text" type="text"/></td>
 				</tr>
                 <tr>
                     <td class="megnevezes right form">Elkészítés határideje<em class="red">*</em></td>
                     <td class="adat left">
-                        <input id="hatarido" name="hatarido" class="text hasDatepicker" type="text"/>
+                        <input id="hatarido" name="hatarido" class="text" type="text"/>
                     </td>
                 </tr>
 				<tr>
@@ -47,7 +47,11 @@
                     
 		</form>
         
+         <script type="text/javascript">
+                    $('#ajanlatkeres_datuma').datepicker();
+                    $('#hatarido').datepicker();
          
+        </script>
 
 </div><!--contentRight-->
 		

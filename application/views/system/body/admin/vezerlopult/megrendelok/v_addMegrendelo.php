@@ -10,25 +10,29 @@
 
 
 
-		<form method="post" action="../auth/addDolgozo" id="userAddForm">
+		<form method="post" action="../vezerlopult/insMegrendelo" id="megredneloAddForm">
 			<table class="adatbekero" align="center">
 				<tbody><tr>
 					<td class="megnevezes right form">Név<em class="red">*</em></td>
-					<td class="adat left"><input name="nev" class="text" type="text"/></td>
+					<td class="adat left"><input name="nev" id="nev" class="text" type="text"/></td>
+				</tr>
+                <tr>
+					<td class="megnevezes right form">Város<em class="red">*</em></td>
+					<td class="adat left"><input name="varos" id="varos" class="text" type="text"/></td>
 				</tr>
 				<tr>
-					<td class="megnevezes right form">Cím</td>
-					<td class="adat left"><input name="cim" class="text" type="text"/></td>
+					<td class="megnevezes right form">Cím<em class="red">*</em></td>
+					<td class="adat left"><input name="cim" id="cim" class="text" type="text"/></td>
 				</tr>
 				<tr>
-					<td class="megnevezes right form">Telefonszám</td>
-					<td class="adat left"><input name="telszam" id="telszam" class="text" type="text"/></td>
+					<td class="megnevezes right form">Telefonszám<em class="red">*</em></td>
+					<td class="adat left"><input name="telefon" id="telefon" class="text" type="text"/></td>
 				</tr>
 				<tr>
 					<td class="megnevezes right form">Email</td>
-					<td class="adat left"><input name="email" class="text" type="text"/></td>
+					<td class="adat left"><input name="email" id="email" class="text" type="text"/></td>
 				</tr>
-				<tr>
+				<!--<tr>
 					<td class="megnevezes right form">Fizetés módja</td>
 					<td class="adat left">
                         <select id="fizmod">
@@ -40,7 +44,7 @@
                <tr>
 					<td class="megnevezes right form">Hány napra fizet</td>
 					<td class="adat left"><input name="hanynap" class="text" type="text"/></td>
-				</tr> 
+				</tr> -->
                
                 
                 <tr>

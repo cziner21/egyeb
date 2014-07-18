@@ -39,7 +39,7 @@
             				<table id="table_arajanlat" class="display">
                                     <thead>
                                     <tr>
-                                        <th>ÁID</th><th>Hozzáadva</th><th>Státusz</th><th>Megrendelő</th><th><input class="checkbox checkBoxAll" type="checkbox"/></th>
+                                        <th>ÁID</th><th>Név</th><th>Hozzáadva</th><th>Státusz</th><th>Megrendelő</th><th>Töröl</th>
                                     </tr>
                                     </thead>
             		
@@ -53,11 +53,12 @@
                                             for($i = 0; $i < $sum ; $i++){
                                                 
                                                 echo '<tr>
-                                                        <td>'.$arajanlatok['aid'][$i].'</td>
-    		                                            <td>'.$arajanlatok['hozzaadva'][$i].'</td>
+                                                        <td>'.anchor('projektek/arajanlatInfo/'.$arajanlatok['aid'][$i],$arajanlatok['aid'][$i]).'</td>
+    		                                            <td>'.$arajanlatok['projekt_nev'][$i].'</td>
+                                                        <td>'.$arajanlatok['hozzaadva'][$i].'</td>
                                 						<td>'.$arajanlatok['statusz'][$i].'</td>
                                 						<td>'. anchor('vezerloPult/megrendeloAdatlap/'.$arajanlatok['megrendelo'][$i],$arajanlatok['megrendelo'][$i]).'</td>
-                                						<td><input class="checkbox" name="" value=""  type="checkbox"></td>
+  						                                <td><input class="checkbox" name="" value=""  type="checkbox"></td>
 			                                          </tr>';
                                             }
                                       ?>
@@ -69,7 +70,7 @@
                             $('#table_arajanlat').DataTable({
                                 
                                 "aoColumnDefs": [
-                                { 'bSortable': false, 'aTargets': [ 4 ] }
+                                { 'bSortable': false, 'aTargets': [ 5 ] }
                                 ],
                                 
                                 // Nyelvi beállítások
@@ -95,7 +96,11 @@
                         	    }
                             });
                             </script>  
-                              
+                            <script type="text/javascript">
+                                $('#ajanlatkeres_datuma').datepicker();
+                                $('#hatarido').datepicker();
+                     
+                     </script>  
                               
             				<div class="right">
             					<button aria-disabled="false" role="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" id="arajanlatDeleteButton"><span class="ui-button-text">Kijelöltek törlése</span></button>
@@ -108,5 +113,8 @@
         </div><!--tabs-->
 </div><!--dilaog-->
 </div><!--contentRight-->
+
+
+
 		
 	

@@ -6,10 +6,12 @@ class vezerloPult extends CI_Controller
 	{
 		parent::__construct();
         //$this->output->enable_profiler(TRUE);
+        //$this->load->library('session');
 		$this->load->helper('url');
 		$this->load->library('tank_auth');
         $this->load->model('/system/m_header');
         $this->load->model('/system/m_dolgozok');
+        $this->load->model('system/vezerlopult/m_megrendelo');
         define('SITETITLE','Normatool Kft.');
 	}
     
@@ -20,6 +22,7 @@ class vezerloPult extends CI_Controller
 			$data['user_id']	= $this->tank_auth->get_user_id();
 			$data['username']	= $this->tank_auth->get_username();
             $data['dolgozo_adatai'] = $this->m_dolgozok->getDolgozoData($data['user_id']);
+            
             $data['main_title'] = SITETITLE;
             $data['site_title'] = SITETITLE .' :: Vezérlőpult -> Hozzáférések';
             $this->load->view('/system/header/admin/v_admin_header', $data);
@@ -53,8 +56,9 @@ class vezerloPult extends CI_Controller
     function dolgozoAdatlap($id){
         //$data['jogok'] = $this->m_dolgozok->dolgozoInfo($data['user_id']);
         $data['user_id']	= $this->tank_auth->get_user_id();
-			$data['username']	= $this->tank_auth->get_username();
-            $data['dolgozo_adatai'] = $this->m_dolgozok->getDolgozoData($id);
+			//$data['username']	= $this->tank_auth->get_username();
+            $data['dolgozo_adatai'] = $this->m_dolgozok->getDolgozoData($data['user_id']);
+            $data['dolgozo_info'] = $this->m_dolgozok->getDolgozoData($id);
             $data['jogok'] = $this->m_dolgozok->dolgozoInfo($id);
             $data['main_title'] = SITETITLE;
             $data['site_title'] = SITETITLE .' :: Vezérlőpult -> Hozzáférések';
@@ -77,6 +81,7 @@ class vezerloPult extends CI_Controller
             $this->load->view('/system/body/admin/vezerlopult/v_vezerlopult_menu',$data);
             $data['jogok'] = $this->m_dolgozok->dolgozoInfo($data['user_id']);
             if($data['jogok']['megrendelok_megtekintes'] == 1){
+                $data['megrendelo'] = $this->m_megrendelo->listMegrendelok();
                 $this->load->view('/system/body/admin/vezerlopult/v_admin_megrendelok', $data);
             }
             else{
@@ -110,6 +115,12 @@ class vezerloPult extends CI_Controller
             }
             $this->load->view('/system/footer/admin/v_admin_footer');
         }
+    }
+    
+    function insMegrendelo(){
+        $data = $_POST;
+        $this->m_megrendelo->addMegrendelo($data);
+        redirect('vezerloPult/megrendelok');
     }
     
     function megrendeloAdatlap($id){

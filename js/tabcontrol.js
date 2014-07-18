@@ -1,4 +1,5 @@
-$(document).ready(function(){                       
+$(document).ready(function(){ 
+             
              $( "#dialog" ).dialog({ width: 700 });
              var width = $( "#dialog" ).dialog( "option", "width" );
              // setter

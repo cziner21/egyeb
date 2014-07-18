@@ -8,8 +8,9 @@ class m_megrendelo extends CI_Model
            
              if ($query->num_rows() !== 0 ){
                  foreach($query->result() as $row){
-                     $list['mid'][] = $row->megrendelo_id;
+                     $list['id'][] = $row->megrendelo_id;
                      $list['nev'][] = $row->nev;
+                     $list['varos'][] = $row->varos;
                      $list['cim'][] = $row->cim;
                      $list['telefon'][] = $row->telefon; 
                      $list['email'][] = $row->cim;

@@ -19,6 +19,11 @@
         <script src="//code.jquery.com/jquery-1.10.2.js"></script>
         <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
         <script src="<?php echo base_url('js/jquery.steps.js');?>"></script>
+        
+        
+        <!--<script type="text/javascript" src="<?php echo base_url('js/datepicker/jquery.ui.core.js');?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/datepicker/jquery.ui.datepicker.js');?>"></script>-->
+        
          
         <script src="<?php echo base_url('js/current_time.js');?>"></script>  
         <script src="<?php echo base_url('js/tabcontrol.js');?>"></script>  
@@ -26,22 +31,25 @@
         <script src="<?php echo base_url('js/projekt/arajanlat.js');?>"></script>
         <script src="//cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
         <link rel="stylesheet" href="//cdn.datatables.net/1.10.0/css/jquery.dataTables.css" />
+        <script src="<?php echo base_url('js/jstree.min.js');?>" type="text/javascript"></script>
         <!--//jquery ui-->
         
     	
-    	<script type="text/javascript" src="<?php echo base_url('js/jquery-ui-1.8.16.custom.min.js');?>"></script>
+    	
     	<script type="text/javascript" src="<?php echo base_url('js/jquery.ui.datepicker-hu.js');?>"></script>
-    	<script src="<?php echo base_url('js/jquery.validate.js');?>" type="text/javascript"></script>
+        <script type="text/javascript" src="http://cachedcommons.org/cache/jquery-jstree/1.0.0/javascripts/jquery-jstree-min.js"></script>
+        <!--<script src="<?php echo base_url('js/jstree.js');?>" type="text/javascript"></script>-->
+    	<!--<script src="<?php echo base_url('js/jquery.validate.js');?>" type="text/javascript"></script>
     	<script src="<?php echo base_url('js/messages_hu.js');?>" type="text/javascript"></script>
     	<script src="<?php echo base_url('js/jquery.autocomplete.js');?>" type="text/javascript"></script>
     	<script src="<?php echo base_url('js/jquery.infieldlabel.min.js');?>" type="text/javascript"></script>
-    	<script src="<?php echo base_url('js/jquery.jstree.js');?>" type="text/javascript"></script>
+    	
     	<script src="<?php echo base_url('js/jquery.contextmenu.js');?>" type="text/javascript"></script>
     	<script src="<?php echo base_url('js/fileuploader.js');?>" type="text/javascript"></script>
     	<script src="<?php echo base_url('js/jqgrid/i18n/grid.locale-hu.js');?>" type="text/javascript"></script>
     	<script src="<?php echo base_url('js/jqgrid/jquery.jqGrid.min.js');?>" type="text/javascript"></script>
     	<script src="<?php echo base_url('js/sap.list.js');?>" type="text/javascript"></script>    
-    	<script type="text/javascript" src="<?php echo base_url('js/sap.root.js');?>"></script>
+    	<script type="text/javascript" src="<?php echo base_url('js/sap.root.js');?>"></script>-->
       
     	
         

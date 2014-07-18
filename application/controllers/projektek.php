@@ -1,5 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
+
 class Projektek extends CI_Controller
 {
     function __construct(){
@@ -14,6 +15,16 @@ class Projektek extends CI_Controller
         $this->load->model('/system/projektek/m_munka');
         define('SITETITLE','Normatool Kft.');
     }
+    
+    /**
+     * Státusz kódok jelentése:
+     * 1 - gyártás alatt
+     * 2 - ellenőrzés alatt
+     * 3 - ellenőrizve
+     * 4 - kiszállítás alatt
+     * 5 - kiszállítva
+     * 6 - elutasítva
+     */
     
     public function index(){
         if (!$this->tank_auth->is_logged_in()) {
@@ -133,7 +144,8 @@ class Projektek extends CI_Controller
     function addArajanlat(){
         if (!$this->tank_auth->is_logged_in()) {
 			redirect('/auth/login/');
-		} else {
+		} 
+        else {
 			$data['user_id']	= $this->tank_auth->get_user_id();
 			$data['username']	= $this->tank_auth->get_username();
             $data['dolgozo_adatai'] = $this->m_dolgozok->getDolgozoData($data['user_id']);
@@ -141,15 +153,7 @@ class Projektek extends CI_Controller
             $data['site_title'] = SITETITLE .' :: Projektek -> Árajánlatok';
             
             $data['jogok'] = $this->m_dolgozok->dolgozoInfo($data['user_id']);
-            if($data['jogok']['arajanlatok_szerkesztes'] == 1){
-            
-            
-              
-                     
-                
-                
-                        
-                    
+            if($data['jogok']['arajanlatok_szerkesztes'] == 1){                    
                     $this->load->view('/system/header/admin/v_admin_header', $data);
                     $this->load->view('/system/body/admin/projektek/v_projektek_menu',$data);
                     //$data['jogok'] = $this->m_dolgozok->dolgozoInfo($data['user_id']);
@@ -175,28 +179,81 @@ class Projektek extends CI_Controller
                 $this->load->view('/system/body/dolgozo/vezerlopult/v_dolgozo_nincsJog', $data);
                 $this->load->view('/system/footer/admin/v_admin_footer');
             }
-            
 		}
     }
     
     function insertArajanlat(){
-    //print_r("itt vagyok");
+    
                     $data = $_POST;
                     $data['statusz'] = "készítés_alatt";
                     $this->m_arajanlat->addArajanlat($data);
                     redirect('projektek');
     }
     
-    function generateMunka(){
-        $munka['projekt_nev'] = "köszörűfej";
-        $munka['megrendeles_datuma'] = '2012-03-06 17:33:07';
-        $munka['hatarido'] = '2012-03-08 11:33:07';
-        $munka['statusz'] = 2;
-        $munka['arajanlat_id'] = 2;
-        $this->m_futoProjektek->addMunka($munka);
-        redirect('projektek/futoProjektek');		
+    ///TODO: Ezt kidolgozni, vázlatosan kb így kéne működnie
+    function editArajanlat($id){
+        
+        $data = $_POST;
+        $this->m_arajanlat->editArajanlat($id,$data);        
+        
+        if($_POST['statusz'] == 'elfogadva'){
+            $data['id'] = $id;
+            $this->generateMunka($data);
+        }
     }
     
+    function generateMunka($data){
+        var_dump($data);
+        $munka['projekt_nev'] = $data['projekt_nev'];
+        $munka['megrendeles_datuma'] = $data['ajanlatkeres_datuma'];
+        $munka['hatarido'] = $data['hatarido'];
+        $munka['statusz'] = 1;
+        $munka['arajanlat_id'] = $data['id'];
+        $this->m_futoProjektek->addMunka($munka);
+        redirect('projektek/futoProjektek');	
+    }
+    
+    function arajanlatInfo($id){
+        $data['user_id']	= $this->tank_auth->get_user_id();
+        $data['dolgozo_adatai'] = $this->m_dolgozok->getDolgozoData($data['user_id']);
+        $data['arajanlat_adatai'] = $this->m_arajanlat->getArajanlatData($id);        
+        $data['main_title'] = SITETITLE;
+        $data['site_title'] = SITETITLE .' :: Projektek -> Árajánlat';
+        $this->load->view('/system/header/admin/v_admin_header', $data);
+        $this->load->view('/system/body/admin/projektek/v_projektek_menu',$data);
+        $this->load->view('/system/body/admin/projektek/arajanlat/v_arajanlatInfo', $data);
+        $this->load->view('/system/footer/admin/v_admin_footer');
+    }
+    
+    function termekHozzaadasa(){
+        $data['user_id']	= $this->tank_auth->get_user_id();
+        $data['dolgozo_adatai'] = $this->m_dolgozok->getDolgozoData($data['user_id']);
+        //$data['arajanlat_adatai'] = $this->m_arajanlat->getArajanlatData($id);        
+        $data['main_title'] = SITETITLE;
+        $data['site_title'] = SITETITLE .' :: Projektek -> Árajánlat';
+        $this->load->view('/system/header/admin/v_admin_header', $data);
+        $this->load->view('/system/body/admin/projektek/v_projektek_menu',$data);
+        $this->load->view('/system/body/admin/projektek/termek/v_addTermek', $data);
+        $this->load->view('/system/footer/admin/v_admin_footer');
+    }
+    
+    function addTermek(){
+        if($_POST['termek_nev'] != "" && $_POST['mennyiseg'] != ""){
+        $termek['termek_nev'] = $_POST['termek_nev'];
+        $termek['mennyiseg'] = $_POST['mennyiseg'];
+        $this->m_arajanlat->addTermek($termek);
+        }
+        
+        redirect('projektek');
+    }
+    
+    
+    
+    
+    
+    /**
+     * Még nem jó, a visszaadott értéket nem sikerült rendesen feldolgozni jquery oldalon
+     */
     function searchMegrendelo(){
         //var_dump("search");
         $newData = $_POST['tomb'];
@@ -206,6 +263,18 @@ class Projektek extends CI_Controller
         
         $msg = $this->m_megrendelo->searchMegrendelo($sk);
         echo json_encode($msg);
+    }
+    
+    function datumos(){
+        /*$data['user_id']	= $this->tank_auth->get_user_id();
+			$data['username']	= $this->tank_auth->get_username();
+            $data['dolgozo_adatai'] = $this->m_dolgozok->getDolgozoData($data['user_id']);
+            $data['main_title'] = SITETITLE;
+            $data['site_title'] = SITETITLE .' :: Dátum';
+        $this->load->view('/system/header/admin/v_admin_header', $data);
+        $this->load->view('/system/body/admin/projektek/v_projektek_menu',$data);*/
+        $this->load->view('datumos');
+        //$this->load->view('/system/footer/admin/v_admin_footer');
     }
     
     

@@ -38,45 +38,72 @@
 				    
 				    <form method="post" action="#" id="customerForm">
 
-				    <table class="other">
-    					<tbody>
-                        <tr class="fejlec">
-    						<td class="uid"><a href="#" class="sort ASC" rel="megrendelo|cid|ASC">CID</a></td>
-    						<td><a href="#" class="sort " rel="megrendelo|name|">Név</a></td>
-    						<td><a href="#" class="sort " rel="megrendelo|address|">Cím</a></td>
-    						<td><a href="#" class="sort " rel="megrendelo|phone|">Telefonszám</a></td>
-    						<td><a href="#" class="sort " rel="megrendelo|email|">Email</a></td>
-    						<td><a href="#" class="sort " rel="megrendelo|added|">Hozzáadva</a></td>
-    						<td><input class="checkbox checkBoxAll" type="checkbox"/></td>
-    					</tr>
+				    <table id="table_id" class="display">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th><th>Név</th><th>Város</th><th>Cím</th><th>Telefon</th><th>Email</th><th>Hozzáadva</th><th><input class="checkbox checkBoxAll" type="checkbox"/></th>
+                                    </tr>
+                                    </thead>
+					               <tbody>
 		                <?php
-                                            //ide jön a felhasználók listázása
-                                            /*
+                                           $sum = count($megrendelo['id']);
+                                            //var_dump($sum);
                                             
-                                            foreach($megrendelok as $megrendelo){
-                                                echo '<tr class="adat">
-                                                        <td class="right uid">'.$megrendelo['id'].'</td>
-    		                                            <td><a href="#" class="customerInformation" rel="'.$megrendelo['id'].'"><b>'.$megrendelo['megrendelo_nev'].'</b></a></td>
-                                						<td>'.$megrendelo['cim'].'</td>
-                                						<td>'.$megrendelo['telefonszam'].'</td>
-                                						<td>'.$megrendelo['email'].'</td>
-                                						<td>'.$megrendelo['created'].'</td>
+                                            for($i = 0; $i < $sum ; $i++){
+                                                echo '<tr>
+                                                        <td class="right uid">'.$megrendelo['id'][$i].'</td>
+    		                                            <td><a href="#" class="customerInformation" rel="'.$megrendelo['id'][$i].'"><b>'.$megrendelo['nev'][$i].'</b></a></td>
+                                						<td>'.$megrendelo['varos'][$i].'</td>
+                                                        <td>'.$megrendelo['cim'][$i].'</td>
+                                						<td>'.$megrendelo['telefon'][$i].'</td>
+                                						<td>'.$megrendelo['email'][$i].'</td>
+                                						<td>'.$megrendelo['hozzaadva'][$i].'</td>
                                 						<td class="trcheck"><input class="checkbox" name="" value="" disabled="disabled" type="checkbox"></td>
 			                                          </tr>';
-                                            }*/
+                                            }
                                       ?>  
 					
 			
 				        </tbody>
                     </table>
 				</form>
+                 <script type="text/javascript">
+                            $('#table_id').DataTable({
+                                
+                                "aoColumnDefs": [
+                                { 'bSortable': false, 'aTargets': [ 7 ] }
+                                ],
+                                
+                                // Nyelvi beállítások
+                        	    'oLanguage': {
+                        	 
+                        	      // Lapozó beállítása
+                        	      'oPaginate': {
+                        	        'sFirst': 'Első oldal',
+                        	        'sLast': 'Utolsó oldal',
+                        	        'sNext': 'Következő',
+                        	        'sPrevious': 'Előző',
+                        	      },
+                        	 
+                        	      // Egyéb nyelvi beállítások
+                        	      'sSearch': 'Keresés:',
+                        	      'sLengthMenu': 'Mutat: _MENU_',
+                                  'sInfo': 'Megjelenítve: _START_ - _END_ a(z) _TOTAL_ rekordból',
+                        	      'sInfoEmpty': 'Megjelenítve: 0 rekord a 0 rekordból',
+                        	      'sInfoFiltered': '(keresés _MAX_ rekordban)',
+                        	      'sEmptyTable': 'Nincs megjeleníthető adat',
+                        	      'sZeroRecords': 'A szűrési feltételnek egyetlen rekord sem felel meg',
+                        	      'sProcessing': 'A feldolgozás folyamatban...'
+                        	    }
+                            });
+                            </script>
+                
 		
 				<div class="right">
 					<button aria-disabled="false" role="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" id="customerDeleteButton"><span class="ui-button-text">Kijelöltek törlése</span></button>
 				</div>
 
-				<script src="javascript/sap.customerList.js" type="text/javascript"></script>
-				<script src="javascript/sap.table.js" type="text/javascript"></script>
+				
                 
 			</div>
 		</div>

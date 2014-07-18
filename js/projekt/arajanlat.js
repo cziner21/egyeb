@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    
+    
     $('#megrendelo_megrendelo_id').keyup(function(){
         var search = $(this).val().replace(/^\s+$/g, "");
         var baseurl = "http://localhost/erp/";
@@ -18,13 +20,16 @@ $(document).ready(function() {
 	        success: function(msg){
                     //$.each(msg, function(i, v) {
                         // For each record in the returned array
-                        $('#finalResult').append(msg);
+                        $('#finalResult').hrml(msg.html);
                     //});
 	                
 	                //$('#ajaxReply').removeClass().addClass('sMessage bra margin ok').fadeOut(200).fadeIn(200).find("div.message").html(msg);
 	        }
         });
     });
+    
+    
+    
     
    
  });   

@@ -38,7 +38,7 @@
                                             for($i = 0; $i < $sum ; $i++){
                                                 
                                                 echo '<tr>
-                                                        <td>'.$munkak['munkaszam'][$i].'</td>
+                                                        <td>'.anchor('projektek/munkaInfo/'.$munkak['munkaszam'][$i],$munkak['munkaszam'][$i]).'</td>
     		                                            <td>'.$munkak['hozzaadva'][$i].'</td>
                                 						<td>'.$munkak['statusz'][$i].'</td>
                                 						<td>'. anchor('vezerloPult/megrendeloAdatlap/'.$munkak['megrendelo'][$i],$munkak['megrendelo'][$i]).'</td>
